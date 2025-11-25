@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Footer() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -23,7 +23,6 @@ export default function Header() {
           <Link to="/login" className="ml-2 px-4 py-2 rounded-lg border text-sm hover:shadow">Sign in</Link>
           <Link to="/register" className="ml-2 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:scale-[1.02] transition-transform">Create account</Link>
         </nav>
-
 
         {/* Mobile menu button */}
         <div className="md:hidden">
