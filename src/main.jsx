@@ -2,8 +2,9 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
-import "./index.css"; // tailwind (MUST be first)
-import "./app.css";   // optional, overrides after tailwind
+import "./index.css"; 
+import "./app.css";   
+
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
