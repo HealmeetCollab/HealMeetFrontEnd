@@ -5,52 +5,84 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white/80 backdrop-blur-sm sticky top-0 z-40 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-600 to-pink-500 text-white flex items-center justify-center font-bold shadow">
-            HM
-          </div>
-          <span className="font-semibold text-slate-800">HealMeet</span>
-        </Link>
+    <header className="bg-white shadow-md">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        
+        {/* LOGO */}
+        <h1 className="text-2xl font-bold text-orange-600">Flirtify</h1>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-6 text-sm">
-          <Link to="/" className="hover:text-indigo-600 transition">Home</Link>
-          <Link to="/features" className="hover:text-indigo-600 transition">Features</Link>
-          <Link to="/pricing" className="hover:text-indigo-600 transition">Pricing</Link>
-          <Link to="/contact" className="hover:text-indigo-600 transition">Contact</Link>
-          <Link to="/login" className="ml-2 px-4 py-2 rounded-lg border text-sm hover:shadow">Sign in</Link>
-          <Link to="/register" className="ml-2 px-4 py-2 rounded-lg bg-indigo-600 text-white text-sm font-medium hover:scale-[1.02] transition-transform">Create account</Link>
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex items-center gap-8">
+          <Link to="/" className="text-gray-700 hover:text-orange-600 transition">Home</Link>
+          <Link to="/contact" className="text-gray-700 hover:text-orange-600 transition">Contact</Link>
+          <Link to="/history" className="text-gray-700 hover:text-orange-600 transition">History</Link>
+
+          <Link
+            to="/login"
+            className="px-4 py-2 border border-orange-600 text-orange-600 rounded-lg hover:bg-orange-50 transition"
+          >
+            Login
+          </Link>
+
+          <Link
+            to="/register"
+            className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
+          >
+            Register
+          </Link>
         </nav>
 
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-gray-700 text-3xl"
+        >
+          ☰
+        </button>
+      </div>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setOpen(!open)}
-            aria-expanded={open}
-            aria-label="Toggle menu"
-            className="p-2 rounded-md border"
+      {/* Mobile Dropdown */}
+      {open && (
+        <div className="md:hidden bg-white px-6 pb-4 space-y-4 shadow-md">
+          <Link
+            to="/"
+            className="block text-gray-700 hover:text-orange-600 transition"
+            onClick={() => setOpen(false)}
           >
-            {open ? "✕" : "☰"}
-          </button>
-        </div>
-      </div>
+            Home
+          </Link>
+          <Link
+            to="/contact"
+            className="block text-gray-700 hover:text-orange-600 transition"
+            onClick={() => setOpen(false)}
+          >
+            Contact
+          </Link>
+          <Link
+            to="/history"
+            className="block text-gray-700 hover:text-orange-600 transition"
+            onClick={() => setOpen(false)}
+          >
+            History
+          </Link>
 
-      {/* Mobile menu */}
-      <div className={`md:hidden transition-max-height duration-300 overflow-hidden ${open ? "max-h-96" : "max-h-0"}`}>
-        <div className="px-4 pb-4 flex flex-col gap-2">
-          <Link to="/" onClick={() => setOpen(false)} className="py-2">Home</Link>
-          <Link to="/features" onClick={() => setOpen(false)} className="py-2">Features</Link>
-          <Link to="/pricing" onClick={() => setOpen(false)} className="py-2">Pricing</Link>
-          <Link to="/contact" onClick={() => setOpen(false)} className="py-2">Contact</Link>
-          <div className="flex gap-2 pt-2">
-            <Link to="/login" onClick={() => setOpen(false)} className="px-4 py-2 border rounded-lg w-full text-center">Sign in</Link>
-            <Link to="/register" onClick={() => setOpen(false)} className="px-4 py-2 rounded-lg bg-indigo-600 text-white w-full text-center">Create</Link>
-          </div>
+          <Link
+            to="/login"
+            className="block px-4 py-2 border border-orange-600 text-orange-600 rounded-lg hover:bg-orange-50 transition"
+            onClick={() => setOpen(false)}
+          >
+            Login
+          </Link>
+
+          <Link
+            to="/register"
+            className="block px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition"
+            onClick={() => setOpen(false)}
+          >
+            Register
+          </Link>
         </div>
-      </div>
+      )}
     </header>
   );
 }
